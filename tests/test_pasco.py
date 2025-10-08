@@ -15,5 +15,5 @@ def test_connect():
     assert device.connected == True
     
     while device.connected:
-        print(device.read_data())
+        print(device.get_calibrated_data())
         sleep(1)

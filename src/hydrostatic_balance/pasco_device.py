@@ -6,13 +6,26 @@ class PascoDevice:
         self.debug = debug
         if debug:
             print(f"Iniciando conexión con el dispositivo Pasco ID: {device_id}")
+        self.initial_offset = 0.0
         self.device_id = device_id
         self.max_retries = max_retries
         self.retry_delay = retry_delay
         self.device = PASCOBLEDevice()
         self.connect()
+        self.calibrate()
         if debug:
             print(f"Conectado al dispositivo Pasco ID: {device_id}")
+
+    def calibrate(self):
+        vals = []
+        for _ in range(5):
+            data = self.device.read_data("Force")
+            if data is not None:
+                vals.append(float(data))
+
+        average = sum(vals) / len(vals)
+        
+        self.initial_offset = average
 
     def connect(self):
         for attempt in range(1, self.max_retries + 1):
@@ -45,6 +58,11 @@ class PascoDevice:
         if self.debug:
             print(f"No se pudo leer {measurement_type} después de {self.max_retries} intentos.")
         return None
+    
+    def get_calibrated_data(self, measurement_type='Force'):
+        data = self.read_data(measurement_type)
+        if data is not None:
+            return -(float(data) - self.initial_offset)
     
     def get_unit(self):
         for attempt in range(1, self.max_retries + 1):

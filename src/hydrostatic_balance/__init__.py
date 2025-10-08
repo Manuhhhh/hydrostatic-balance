@@ -29,7 +29,7 @@ def main():
         keyboard.wait('space')
         data = None
         if device.connected:
-            data = device.read_data()
+            data = device.get_calibrated_data()
         else:
             print("Conexión perdida. Saliendo...")
             break
@@ -41,7 +41,7 @@ def main():
         print("Presiona espacio para leer el valor de la segunda fuerza...")
         keyboard.wait('space')
         if device.connected:
-            data = device.read_data()
+            data = device.get_calibrated_data()
         else:
             print("Conexión perdida. Saliendo...")
             break
