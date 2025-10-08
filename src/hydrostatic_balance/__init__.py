@@ -15,6 +15,7 @@ def main():
     while True:
         keyboard.wait('space')
         data = device.read_data()
+        serial.send(data)
         
         
         
