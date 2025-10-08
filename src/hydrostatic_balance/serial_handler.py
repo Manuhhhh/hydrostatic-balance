@@ -17,7 +17,7 @@ class SerialHandler:
     def send(self, data):
         if self.debug:
             print(f"Enviando datos: {data}")
-        # Agregar salto de línea para que Arduino procese la línea
+            
         self.serial.write((data + "\n").encode())
         if self.debug:
             print("Listo")
