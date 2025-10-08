@@ -16,3 +16,4 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 dev = "src.hydrostatic_balance.__init__:main"
+test = "tests.test_pasco:test_connect"

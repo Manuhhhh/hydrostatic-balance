@@ -22,6 +22,7 @@ def main():
     serial = SerialHandler(device_port, baud_rate, timeout, debug)
     arquimedes_calculator = ArquimedesCalculator(g_val, water_density)
     
+    
     while True:
         
         print("Presiona espacio para leer el valor de la fuerza...")

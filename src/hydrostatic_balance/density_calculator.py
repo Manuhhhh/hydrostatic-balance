@@ -9,6 +9,7 @@ class ArquimedesCalculator:
         Wa: peso en aire (N)
         Ws: peso sumergido en agua (N)
         """
+        
         if Wa <= Ws:
             raise ValueError("Wa debe ser mayor que Ws (peso en aire > peso sumergido).")
 
