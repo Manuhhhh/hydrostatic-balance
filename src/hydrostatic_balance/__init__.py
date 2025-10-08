@@ -24,29 +24,29 @@ def main():
     
     while True:
         
-        print("Press space to read first force value...")
+        print("Presiona espacio para leer el valor de la fuerza...")
         keyboard.wait('space')
         data = None
         if device.connected:
             data = device.read_data()
         else:
-            print("Connection lost. Exiting...")
+            print("Conexión perdida. Saliendo...")
             break
         
         if data is None:
-            print("Could not read data from device. Retrying...")
+            print("No se pudieron leer los datos del dispositivo. Reintentando...")
             continue
         Wa_val = float(data)
-        print("Press space to read second force value...")
+        print("Presiona espacio para leer el valor de la segunda fuerza...")
         keyboard.wait('space')
         if device.connected:
             data = device.read_data()
         else:
-            print("Connection lost. Exiting...")
+            print("Conexión perdida. Saliendo...")
             break
         
         if data is None:
-            print("Could not read data from device. Retrying...")
+            print("No se pudieron leer los datos del dispositivo. Reintentando...")
             continue
         Ws_val = float(data)
         
@@ -61,7 +61,7 @@ def main():
         serial.send(dataString)
         
         if debug:
-            print("Data sent:", dataString)
+            print("Datos enviados:", dataString)
         
         
         
