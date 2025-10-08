@@ -62,7 +62,12 @@ class PascoDevice:
     def get_calibrated_data(self, measurement_type='Force'):
         data = self.read_data(measurement_type)
         if data is not None:
-            return -(float(data) - self.initial_offset)
+            return_value = -(float(data) - self.initial_offset)
+            if return_value < 0:
+                return_value = 0
+            return return_value
+        else:
+            return None
     
     def get_unit(self):
         for attempt in range(1, self.max_retries + 1):
