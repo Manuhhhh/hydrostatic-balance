@@ -18,6 +18,7 @@ class PascoDevice:
         for attempt in range(1, self.max_retries + 1):
             try:
                 self.device.connect_by_id(self.device_id)
+                
                 if self.debug:
                     print(f"Conectado al dispositivo {self.device_id}")
                 return
