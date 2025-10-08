@@ -22,8 +22,6 @@ def main():
     serial = SerialHandler(device_port, baud_rate, timeout, debug)
     arquimedes_calculator = ArquimedesCalculator(g_val, water_density)
     
-    print("UNIDAD DE MEDIDA:", device.get_unit())
-    
     while True:
         
         print("Press space to read first force value...")
@@ -58,7 +56,7 @@ def main():
         
         D_val = arquimedes_calculator.calculate_density(Wa_val, Ws_val)
         
-        dataString = f"DATA:Wa:{Wa_val:.2f}N,Ws:{Ws_val:.2f}N-E:{E_val:.2f}N,V:{V_val:.6f}-Densidad:,D:{D_val:.2f}kg/m3"
+        dataString = f"DATA:Wa:{Wa_val:.2f}N,Ws:{Ws_val:.2f}N|E:{E_val:.2f}N,V:{V_val:.6f}|Densidad:,D:{D_val:.2f}kg/m3"
         
         serial.send(dataString)
         
