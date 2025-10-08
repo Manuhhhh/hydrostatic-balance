@@ -49,7 +49,7 @@ class PascoDevice:
     def get_unit(self):
         for attempt in range(1, self.max_retries + 1):
             try:
-                return self.device.get_measurement_unit()
+                return self.device.get_measurement_unit("Force")
             except Exception as e:
                 if self.debug:
                     print(f"Error obteniendo unidad de medida (intento {attempt}): {e}")

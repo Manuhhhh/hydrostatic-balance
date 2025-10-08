@@ -28,14 +28,25 @@ def main():
         
         print("Press space to read first force value...")
         keyboard.wait('space')
-        data = device.read_data()
+        data = None
+        if device.connected:
+            data = device.read_data()
+        else:
+            print("Connection lost. Exiting...")
+            break
+        
         if data is None:
             print("Could not read data from device. Retrying...")
             continue
         Wa_val = float(data)
         print("Press space to read second force value...")
         keyboard.wait('space')
-        data = device.read_data()
+        if device.connected:
+            data = device.read_data()
+        else:
+            print("Connection lost. Exiting...")
+            break
+        
         if data is None:
             print("Could not read data from device. Retrying...")
             continue
