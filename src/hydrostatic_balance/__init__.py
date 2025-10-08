@@ -8,11 +8,11 @@ load_dotenv()
 
 pasco_id = os.getenv("PASCO_ID")
 device_port = os.getenv("DEVICE_PORT")
-baud_rate = os.getenv("BAUD_RATE")
-timeout = os.getenv("TIMEOUT")
-max_retries = os.getenv("MAX_RETRIES")
-retry_delay = os.getenv("RETRY_DELAY")
-debug = os.getenv("DEBUG")
+baud_rate = int(os.getenv("BAUD_RATE"))
+timeout = int(os.getenv("TIMEOUT"))
+max_retries = int(os.getenv("MAX_RETRIES"))
+retry_delay = int(os.getenv("RETRY_DELAY"))
+debug = os.getenv("DEBUG") == "True"
 
 def main():
     device = PascoDevice(pasco_id, max_retries, retry_delay, debug)
