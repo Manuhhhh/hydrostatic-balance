@@ -18,11 +18,13 @@ class PascoDevice:
         for attempt in range(1, self.max_retries + 1):
             try:
                 self.device.connect_by_id(self.device_id)
+                self.connected = True
                 
                 if self.debug:
                     print(f"Conectado al dispositivo {self.device_id}")
                 return
             except Exception as e:
+                self.connected = False
                 if self.debug:
                     print(f"Error conectando al dispositivo (intento {attempt}): {e}")
                 time.sleep(self.retry_delay)
@@ -36,15 +38,31 @@ class PascoDevice:
                 if self.debug:
                     print(f"Error leyendo {measurement_type} (intento {attempt}): {e}")
                 self.device.disconnect()
+                self.connected = False
                 time.sleep(self.retry_delay)
                 self.connect()
+                self.connected = True
         if self.debug:
             print(f"No se pudo leer {measurement_type} después de {self.max_retries} intentos.")
         return None
+    
+    def get_unit(self):
+        for attempt in range(1, self.max_retries + 1):
+            try:
+                return self.device.get_measurement_unit()
+            except Exception as e:
+                if self.debug:
+                    print(f"Error obteniendo unidad de medida (intento {attempt}): {e}")
+                self.device.disconnect()
+                self.connected = False
+                time.sleep(self.retry_delay)
+                self.connect()
+                self.connected = True
 
     def disconnect(self):
         try:
             self.device.disconnect()
+            self.connected = False
             if self.debug:
                 print(f"Desconectado del dispositivo {self.device_id}")
         except Exception as e:

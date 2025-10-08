@@ -23,7 +23,7 @@ def main():
     arquimedes_calculator = ArquimedesCalculator(g_val, water_density)
     
     while True:
-        lcd1Vals = []
+        
         print("Press space to read first force value...")
         keyboard.wait('space')
         data = device.read_data()
