@@ -5,7 +5,7 @@ description = ""
 authors = [{ name = "Manuhhh", email = "manuelbadillabustelo@gmail.com" }]
 readme = "README.md"
 requires-python = "3.11.0"
-dependencies = ["pasco (>=0.3.65,<0.4.0)", "serial (>=0.0.97,<0.0.98)", "python-dotenv (>=1.1.1,<2.0.0)"]
+dependencies = ["pasco (>=0.3.65,<0.4.0)", "serial (>=0.0.97,<0.0.98)", "python-dotenv (>=1.1.1,<2.0.0)", "keyboard (>=0.13.5,<0.14.0)"]
 
 [tool.poetry]
 packages = [{ include = "hydrostatic_balance", from = "src" }]
