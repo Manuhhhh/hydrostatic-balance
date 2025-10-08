@@ -9,7 +9,7 @@ load_dotenv()
 pasco_id = os.getenv("PASCO_ID")
 
 def main():
-    device = PascoDevice(pasco_id)
+    device = PascoDevice(pasco_id, max_retries=5, retry_delay=3)
     serial = SerialHandler(port="COM5", baud_rate=9600, timeout=2)
     
     while True:
