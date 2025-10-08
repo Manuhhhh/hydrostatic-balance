@@ -65,7 +65,7 @@ class PascoDevice:
             return_value = -(float(data) - self.initial_offset)
             if return_value < 0:
                 return_value = 0
-            return return_value
+            return round(return_value, 2)
         else:
             return None
     
