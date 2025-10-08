@@ -49,7 +49,7 @@ def main():
         
         serial.send(dataString)
         
-        print("Press space to read third force value...")
+        print("Data sent:", dataString)
         
         
         
