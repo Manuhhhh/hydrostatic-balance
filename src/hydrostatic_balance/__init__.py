@@ -2,6 +2,7 @@ from src.hydrostatic_balance.density_calculator import ArquimedesCalculator
 from src.hydrostatic_balance.pasco_device import PascoDevice
 from src.hydrostatic_balance.serial_handler import SerialHandler
 import os
+
 from dotenv import load_dotenv
 import keyboard
 
@@ -21,7 +22,6 @@ def main():
     device = PascoDevice(pasco_id, max_retries, retry_delay, debug)
     serial = SerialHandler(device_port, baud_rate, timeout, debug)
     arquimedes_calculator = ArquimedesCalculator(g_val, water_density)
-    
     
     while True:
         

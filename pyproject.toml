@@ -2,7 +2,7 @@
 name = "hydrostatic-balance"
 version = "0.1.0"
 description = ""
-authors = [{ name = "Manuhhh", email = "manuelbadillabustelo@gmail.com" }]
+authors = [{ name = "Manuhhh", email = "eaeaeae@gmail.com" }, { name = "Alejandro Gutierrez", email = "eaeaeaea@gmail.com" }]
 readme = "README.md"
 requires-python = "3.11.0"
 dependencies = ["pasco (>=0.3.65,<0.4.0)", "python-dotenv (>=1.1.1,<2.0.0)", "keyboard (>=0.13.5,<0.14.0)", "pyserial (>=3.5,<4.0)"]
