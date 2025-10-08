@@ -49,7 +49,8 @@ def main():
         
         serial.send(dataString)
         
-        print("Data sent:", dataString)
+        if debug:
+            print("Data sent:", dataString)
         
         
         
