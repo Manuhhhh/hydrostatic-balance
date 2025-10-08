@@ -22,6 +22,8 @@ def main():
     serial = SerialHandler(device_port, baud_rate, timeout, debug)
     arquimedes_calculator = ArquimedesCalculator(g_val, water_density)
     
+    print("UNIDAD DE MEDIDA:", device.get_unit())
+    
     while True:
         
         print("Press space to read first force value...")
