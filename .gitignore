@@ -1,2 +1,3 @@
 /.env
 /poetry.lock
+/src/hydrostatic_balance/__pycache__
