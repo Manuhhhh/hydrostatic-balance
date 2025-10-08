@@ -7,15 +7,15 @@ import keyboard
 
 load_dotenv()
 
-pasco_id = os.getenv("PASCO_ID")
-device_port = os.getenv("DEVICE_PORT")
-baud_rate = int(os.getenv("BAUD_RATE"))
-timeout = int(os.getenv("TIMEOUT"))
-max_retries = int(os.getenv("MAX_RETRIES"))
-retry_delay = int(os.getenv("RETRY_DELAY"))
+pasco_id = os.getenv("PASCO_ID", "12345")
+device_port = os.getenv("DEVICE_PORT", "COM5")
+baud_rate = int(os.getenv("BAUD_RATE", 9600))
+timeout = int(os.getenv("TIMEOUT", 2))
+max_retries = int(os.getenv("MAX_RETRIES", 5))
+retry_delay = int(os.getenv("RETRY_DELAY", 2))
 debug = os.getenv("DEBUG") == "True"
-g_val = float(os.getenv("G_VAL"))
-water_density = float(os.getenv("WATER_DENSITY"))
+g_val = float(os.getenv("G_VAL", 9.81))
+water_density = int(os.getenv("WATER_DENSITY", 1000))
 
 def main():
     device = PascoDevice(pasco_id, max_retries, retry_delay, debug)
