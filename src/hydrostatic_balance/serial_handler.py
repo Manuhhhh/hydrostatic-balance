@@ -19,5 +19,6 @@ class SerialHandler:
             print(f"Enviando datos: {data}")
             
         self.serial.write((data + "\n").encode())
+        
         if self.debug:
             print("Listo")

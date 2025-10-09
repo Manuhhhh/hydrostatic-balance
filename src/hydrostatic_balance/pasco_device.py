@@ -55,6 +55,7 @@ class PascoDevice:
                 time.sleep(self.retry_delay)
                 self.connect()
                 self.connected = True
+                
         if self.debug:
             print(f"No se pudo leer {measurement_type} después de {self.max_retries} intentos.")
         return None
@@ -68,7 +69,7 @@ class PascoDevice:
             return round(return_value, 2)
         else:
             return None
-    
+
     def get_unit(self):
         for attempt in range(1, self.max_retries + 1):
             try:

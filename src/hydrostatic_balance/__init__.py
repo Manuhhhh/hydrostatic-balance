@@ -24,10 +24,11 @@ def main():
     arquimedes_calculator = ArquimedesCalculator(g_val, water_density)
     
     while True:
-        
         print("Presiona espacio para leer el valor de la fuerza...")
         keyboard.wait('space')
+        
         data = None
+        
         if device.connected:
             data = device.get_calibrated_data()
         else:
@@ -58,11 +59,22 @@ def main():
         D_val = arquimedes_calculator.calculate_density(Wa_val, Ws_val)
         
         dataString = f"DATA:Wa:{Wa_val:.2f}N,Ws:{Ws_val:.2f}N|E:{E_val:.2f}N,V:{V_val:.6f}|Densidad:,D:{D_val:.2f}kg/m3"
+        # CONTENIDO DEL STRING: DATA:Wa:{1}N,Ws:{2}N|E:{3},V:{4}|Densidad:,{5}kg/m3
+
+        # // Valores:
+        # // 1: float peso 1
+        # // 2: float peso 2
+        # // 3: float peso sumergido
+        # // 4: float volumen desplazado
+        # // 5: float: densidad
+
+        # COMO TENDRIA QUE TERMINAR SEPARADA LA INFO
+
+        # Pantalla 1 valores: ["Wa:{1}N","Ws:{2}N"]
+        # Pantalla 2 valores: ["E:{3}","V:{4}"]
+        # Pantalla 3 valores: ["Densidad:","{5}kg/m3"]
         
         serial.send(dataString)
         
         if debug:
             print("Datos enviados:", dataString)
-        
-        
-        
